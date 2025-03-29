@@ -40,7 +40,7 @@
           "format": "boolean"
         },
         "_id": {
-          "type": "int"
+          "type": "string"
         }
       },
       "required": [

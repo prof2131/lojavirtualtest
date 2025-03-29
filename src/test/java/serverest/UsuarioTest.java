@@ -1,6 +1,7 @@
 package serverest;
 
 import com.github.javafaker.Faker;
+import dto.UsuarioDTO;
 import io.restassured.http.ContentType;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Disabled;
@@ -24,13 +25,12 @@ public class UsuarioTest extends BaseTest {
                 .body("usuarios", not(empty()));
     }
 
-    @Disabled
     @Test
     public void deveCadastrarNovoUsuario() {
-        String usuario = "{\"nome\":\"João Silva\",\"email\":\"joao_silva@example.com\",\"password\":\"senha123\",\"administrador\":\"true\"}";
+        UsuarioDTO usuarioDTO = new UsuarioDTO("true");
         given()
                 .contentType(ContentType.JSON)
-                .body(usuario)
+                .body(usuarioDTO)
                 .when()
                 .post("/usuarios")
                 .then().log().all()
