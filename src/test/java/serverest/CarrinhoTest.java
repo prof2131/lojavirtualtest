@@ -25,12 +25,11 @@ public class CarrinhoTest extends BaseTest{
     public void naoDeveCadastrarCarrinhoSemProdutos() {
         String carrinhoVazio = "{\"produtos\":[]}";
 
-        RequestSpecification teste = given()
+        given()
                 .contentType(ContentType.JSON)
                 .header("Authorization", TOKEN)
-                .body(carrinhoVazio).log().all();
-
-                when()
+                .body(carrinhoVazio).log().all()
+                .when()
                 .post("/carrinhos")
                 .then()
                 .statusCode(400).log().all()
