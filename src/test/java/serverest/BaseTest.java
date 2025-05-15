@@ -1,11 +1,9 @@
 package serverest;
 
 import io.restassured.RestAssured;
-import io.restassured.filter.log.RequestLoggingFilter;
-import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.http.ContentType;
+import io.restassured.response.ValidatableResponse;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.containsString;
@@ -26,4 +24,6 @@ public class BaseTest {
                     .body("message", containsString("Login realizado com sucesso"))
                 .extract().jsonPath().get("authorization");
     }
+
+
 }
