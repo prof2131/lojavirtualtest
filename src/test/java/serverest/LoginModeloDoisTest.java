@@ -2,16 +2,13 @@ package serverest;
 
 import dto.LoginDTO;
 import dto.UsuarioReqDTO;
-import io.restassured.http.ContentType;
-import io.restassured.response.ValidatableResponse;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.containsString;
 
-public class LoginTestModelo2 extends  BaseTest{
+public class LoginModeloDoisTest extends  BaseTest{
 
     static UsuarioReqDTO usuarioReqDTO;
 
