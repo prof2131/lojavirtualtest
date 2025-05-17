@@ -1,6 +1,7 @@
 package serverest;
 import dto.LoginDTO;
 import io.restassured.http.ContentType;
+import io.restassured.module.jsv.JsonSchemaValidator;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.*;
@@ -27,7 +28,9 @@ public class LoginTest extends  BaseTest{
                 .when()
                 .post("/login")
                 .then()
-                .statusCode(401)
-                .body("message", containsString("Email e/ou senha inválidos"));
+                .statusCode(401).log().all()
+                .body("message", containsString("Email e/ou senha inválidos"))
+                .body(JsonSchemaValidator
+                        .matchesJsonSchemaInClasspath("schemas/login-NOK-schema.json"));;
     }
 }
